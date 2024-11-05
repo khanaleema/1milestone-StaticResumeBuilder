@@ -199,31 +199,55 @@
         margin-left: 20px;
         list-style-type: disc;
       }
-
       .skills {
-        margin-top: 25px;
-      }
+    margin-top: 25px;
+}
 
-      .skills ul {
-        display: flex;
-        flex-wrap: wrap;
-        list-style: none;
-        padding: 0;
-      }
+.skills ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+}
 
-      .skills ul li {
-        background-color: #eccc48;
-        color: #34495e;
-        border-radius: 15px;
-        padding: 5px 10px;
-        margin: 5px;
-        font-weight: bold;
-        transition: transform 0.2s;
-      }
+.skills ul li {
+    background-color: #eccc48;
+    color: #34495e;
+    border-radius: 15px;
+    padding: 5px 10px;
+    margin: 5px;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
 
-      .skills ul li:hover {
-        transform: scale(1.1);
-      }
+.skills ul li:hover {
+    transform: scale(1.1);
+}
+
+#skills-list {
+    transition: all 0.3s ease;
+    /* Optional: If you want to add some spacing or styling */
+    padding: 10px 0; /* Additional padding for aesthetics */
+}
+.button-primary {
+    background-color: #34495e; /* Dark background color */
+    color: #ffffff; /* White text color */
+    border: none; /* Remove default border */
+    border-radius: 25px; /* Rounded corners */
+    padding: 10px 20px; /* Top/bottom and left/right padding */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+}
+
+.button-primary:hover {
+    background-color: #a1c0db; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly grow the button on hover */
+}
+
+.button-primary:focus {
+    outline: none; /* Remove outline on focus */
+}
 
       .timeline {
         position: relative;
@@ -391,23 +415,27 @@
             </p>
           </div>
 
-          <!-- Skills -->
-          <div class="skills">
-            <h2 class="section-title">Skills</h2>
-            <ul>
-              <li>Html</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-              <li>Python</li>
-              <li>Next.js</li>
-              <li>TypeScript</li>
-              <li>Php</li>
-              <li>React</li>
-              <li>Tailwind CSS</li>
-              <li>Laravel</li>
-              <li>Graphic Designing</li>
-            </ul>
-          </div>
+ <!-- Skills Section -->
+<div class="skills">
+  <h2 class="section-title">Skills</h2>
+  <button id="toggle-skills" class="button-primary">Show Skills</button>
+  <div id="skills-list" style="display: none;">
+      <ul>
+          <li>Html</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>Python</li>
+          <li>Next.js</li>
+          <li>TypeScript</li>
+          <li>Php</li>
+          <li>React</li>
+          <li>Tailwind CSS</li>
+          <li>Laravel</li>
+          <li>Graphic Designing</li>
+      </ul>
+  </div>
+</div>
+
 
           <!-- Languages -->
           <div class="languages">
@@ -580,4 +608,18 @@
       </div>
     </div>
   </body>
+  <script>
+    document.getElementById('toggle-skills').addEventListener('click', function() {
+        const skillsList = document.getElementById('skills-list');
+        if (skillsList.style.display === 'none' || skillsList.style.display === '') {
+            skillsList.style.display = 'block';
+            this.textContent = 'Hide Skills'; // Button text ko badalna
+        } else {
+            skillsList.style.display = 'none';
+            this.textContent = 'Show Skills'; // Button text wapas badalna
+        }
+    });
+</script>
+
+
 </html>
