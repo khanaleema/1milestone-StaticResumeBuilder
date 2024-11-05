@@ -1,31 +1,583 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume - Aleema Khan</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="resume-container">
-        <header class="header">
-            <h1>Static Resume</h1>
-            <h2>Aleema Khan</h2>
-            <p>Email: <a href="mailto:aleema.khan@example.com">khanaleema770@gmail.com</a></p>
-            <p>Phone: <a href="tel:+923000000000">03110205136</a></p>
-        </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professional CV Template</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+      }
 
-        <div class="section-buttons">
-            <button class="btn" id="educationBtn">Education</button>
-            <button class="btn" id="skillsBtn">Skills</button>
-            <button class="btn" id="experienceBtn">Experience</button>
+      body {
+        background-color: #f7f8fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .cv-template {
+        width: 100%;
+        max-width: 960px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .main-content {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .left-section {
+        width: 35%;
+        background-color: #34495e;
+        color: #ffffff;
+        padding: 30px;
+        position: relative;
+      }
+
+      .profile-picture {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background-color: #ccc;
+        background-image: url("a.jpg");
+        background-size: cover;
+        background-position: center;
+        margin: 0 auto;
+        border: 8px solid transparent;
+        background-clip: padding-box;
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.4);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-origin: border-box;
+      }
+
+      .profile-picture:before {
+        content: "";
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        right: -4px;
+        bottom: -4px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #ff6347, #ffcc33, #66ff99);
+        z-index: -1;
+      }
+
+      .profile-picture::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        transition: background 0.3s;
+      }
+
+      .profile-picture:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.5);
+      }
+
+      .profile-picture:hover::after {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .left-section h1 {
+        font-size: 26px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .profession {
+        font-size: 16px;
+        font-weight: 300;
+        margin: 10px 0 20px;
+        text-transform: uppercase;
+        text-align: center;
+        color: #f1c40f;
+      }
+
+      .contact-info,
+      .skills,
+      .languages,
+      .hobbies,
+      .about-me {
+        margin-top: 25px;
+      }
+
+      .section-title {
+        font-size: 18px;
+        color: #f1c40f;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        border-bottom: 2px solid #ffffff;
+        padding-bottom: 5px;
+      }
+
+      .contact-info p,
+      .skills ul li,
+      .languages ul li,
+      .hobbies ul li,
+      .about-me p {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      .right-section {
+        width: 65%;
+        padding: 30px;
+        background-color: #ecf0f1;
+        position: relative;
+      }
+
+      .right-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -15px;
+        width: 3px;
+        height: 100%;
+        background-color: #f1c40f;
+      }
+
+      .section {
+        margin-bottom: 25px;
+        border: 1px solid #34495e;
+        padding: 15px;
+        border-radius: 8px;
+        position: relative;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .section h3 {
+        font-size: 20px;
+        color: #34495e;
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+        display: flex;
+        align-items: center;
+      }
+
+      .section h3 .icon {
+        font-size: 20px;
+        color: #f1c40f;
+        margin-right: 10px;
+      }
+
+      .section-content p,
+      .section-content ul li {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      .projects ul li,
+      .references ul li {
+        margin-left: 20px;
+        list-style-type: disc;
+      }
+
+      .skills {
+        margin-top: 25px;
+      }
+
+      .skills ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        padding: 0;
+      }
+
+      .skills ul li {
+        background-color: #eccc48;
+        color: #34495e;
+        border-radius: 15px;
+        padding: 5px 10px;
+        margin: 5px;
+        font-weight: bold;
+        transition: transform 0.2s;
+      }
+
+      .skills ul li:hover {
+        transform: scale(1.1);
+      }
+
+      .timeline {
+        position: relative;
+        padding-left: 30px;
+        margin-top: 10px;
+        border-left: 2px solid #34495e;
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 20px;
+      }
+
+      .timeline-item .dot {
+        position: absolute;
+        top: 0;
+        left: -11px;
+        width: 12px;
+        height: 12px;
+        background-color: #34495e;
+        border-radius: 50%;
+        border: 2px solid #f1c40f;
+      }
+
+      .timeline-item .timeline-content {
+        margin-left: 15px;
+      }
+
+      .footer {
+        background-color: #34495e;
+        color: #ffffff;
+        text-align: center;
+        padding: 15px 0;
+        font-size: 14px;
+        margin-top: auto;
+        border-top: 2px solid #ecf0f1;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px 5px 0;
+        border-radius: 5px;
+        text-align: center;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      .button-primary {
+        background-color: #f1c40f;
+        color: #34495e;
+      }
+
+      .button-secondary {
+        background-color: #2ecc71;
+        color: white;
+      }
+
+      .button-danger {
+        background-color: #e74c3c;
+        color: white;
+      }
+
+      .social-icons {
+        margin-top: 10px;
+      }
+
+      .social-icons a {
+        color: white;
+        margin: 0 10px;
+        font-size: 18px;
+        transition: color 0.3s;
+      }
+
+      .social-icons a:hover {
+        color: #f1c40f;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .main-content {
+          flex-direction: column;
+        }
+
+        .left-section,
+        .right-section {
+          width: 100%;
+          padding: 20px;
+        }
+
+        .profile-picture {
+          width: 120px;
+          height: 120px;
+        }
+
+        .section h3 {
+          font-size: 18px;
+        }
+
+        .section-content p,
+        .section-content ul li {
+          font-size: 13px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .profile-picture {
+          width: 100px;
+          height: 100px;
+        }
+
+        .left-section h1 {
+          font-size: 22px;
+        }
+
+        .profession {
+          font-size: 14px;
+        }
+
+        .section h3 {
+          font-size: 16px;
+        }
+
+        .section-content p,
+        .section-content ul li {
+          font-size: 12px;
+        }
+
+        .button {
+          padding: 8px 16px;
+        }
+
+        .social-icons a {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cv-template">
+      <div class="main-content">
+        <!-- Left Section -->
+        <div class="left-section">
+          <div class="profile-picture"></div>
+          <h1>Aleema Khan</h1>
+          <p class="profession">Web Developer</p>
+
+          <!-- Contact Info -->
+          <div class="contact-info">
+            <h2 class="section-title">Contact</h2>
+            <p>📞 123-456-7890</p>
+            <p>✉️ khanaleema770@gmail.com</p>
+            <p>📍 Karachi, Pakistan</p>
+          </div>
+
+          <!-- About Me -->
+          <div class="about-me">
+            <h2 class="section-title">About Me</h2>
+            <p>
+              Creative Web Developer and Designer with a knack for crafting
+              interactive, user-focused experiences. Skilled in the latest web
+              technologies, I’m passionate about solving challenging problems
+              and delivering polished, professional results. Always learning,
+              always innovating.
+            </p>
+          </div>
+
+          <!-- Skills -->
+          <div class="skills">
+            <h2 class="section-title">Skills</h2>
+            <ul>
+              <li>Html</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Python</li>
+              <li>Next.js</li>
+              <li>TypeScript</li>
+              <li>Php</li>
+              <li>React</li>
+              <li>Tailwind CSS</li>
+              <li>Laravel</li>
+              <li>Graphic Designing</li>
+            </ul>
+          </div>
+
+          <!-- Languages -->
+          <div class="languages">
+            <h2 class="section-title">Languages</h2>
+            <ul>
+              <li>English (Fluent)</li>
+              <li>Urdu (Expert)</li>
+              <li>Pashto (Conversational)</li>
+            </ul>
+          </div>
+
+          <!-- Hobbies -->
+          <div class="hobbies">
+            <h2 class="section-title">Hobbies</h2>
+            <ul>
+              <li>Development</li>
+              <li>Traveling</li>
+              <li>Sketching</li>
+              <li>Writer</li>
+              <li>Reading</li>
+              <li>Editing</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="content-section" id="content">
-            <!-- Content will be displayed here when buttons are clicked -->
+        <!-- Right Section -->
+        <div class="right-section">
+          <!-- Education -->
+          <div class="section">
+            <h3><i class="icon fas fa-graduation-cap"></i> Education</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <span class="dot"></span>
+                <div class="timeline-content">
+                  <h4>Web Developer</h4>
+                  <p>
+                    Certified Cloud Applied Generative AI Engineering, 2024 -
+                    (ongoing)
+                  </p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <span class="dot"></span>
+                <div class="timeline-content">
+                  <h4>Intermediate</h4>
+                  <p>Pre-Engineering, 2023-2024</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Work Experience -->
+          <div class="section">
+            <h3><i class="icon fas fa-briefcase"></i> Work Experience</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <span class="dot"></span>
+                <div class="timeline-content">
+                  <p>
+                    Successfully completed multiple projects involving front-end
+                    and backend web development.
+                  </p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <span class="dot"></span>
+                <div class="timeline-content">
+                  <p>
+                    I’m eager to explore new opportunities to apply my skills,
+                    grow, and make a meaningful impact in web development and
+                    design.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projects -->
+          <div class="section projects">
+            <h3><i class="icon fas fa-project-diagram"></i> Projects</h3>
+            <div class="section-content">
+              <p>
+                E-commerce Website :
+                <a
+                  href="https://ecommerce-website-next-js-five.vercel.app/"
+                  target="_blank"
+                  >e-commercewebsite.com</a
+                >
+              </p>
+              <p>
+                Blog Web :
+                <a
+                  href="https://next-js-blog-web-pi.vercel.app/"
+                  target="_blank"
+                  >blogwebsite.com</a
+                >
+              </p>
+              <p>
+                WorldAtlas :
+                <a
+                  href="https://heartfelt-granita-ed7fe2.netlify.app/"
+                  target="_blank"
+                  >worldatlas.com</a
+                >
+              </p>
+              <p>
+                MoreProjects :
+                <a href="https://github.com/khanaleema" target="_blank"
+                  >github.com</a
+                >
+              </p>
+            </div>
+          </div>
+
+          <!-- Portfolio -->
+          <div class="section portfolio">
+            <h3><i class="icon fas fa-images"></i> Portfolio</h3>
+            <div class="section-content">
+              <p>
+                Check out my Personal Portfolio:
+                <a
+                  href="https://curious-naiad-c127f9.netlify.app/"
+                  target="_blank"
+                  >portfolio1.com</a
+                >
+              </p>
+              <p>
+                Another One:
+                <a
+                  href="https://earnest-tapioca-803eab.netlify.app/"
+                  target="_blank"
+                  >portfolio2.com</a
+                >
+              </p>
+            </div>
+          </div>
+
+          <!-- Services -->
+          <div class="section references">
+            <h3><i class="icon fas fa-address-book"></i> Service</h3>
+            <div class="section-content">
+              <ul>
+                <li>Web Development</li>
+                <li>Web Designing</li>
+                <li>UI/UX Designing</li>
+                <li>Frontend Website</li>
+                <li>Blog Writing</li>
+                <li>Backend Website</li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>Connect with me:</p>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/aleemakhan17" target="_blank"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a href="https://github.com/khanaleema" target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a href="https://www.instagram.com/i._.aleemakhan/" target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </div>
+        <p>© 2024 Aleema Khan. All rights reserved.</p>
+      </div>
     </div>
-
-    <script src="script.js"></script>
-</body>
+  </body>
 </html>
